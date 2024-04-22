@@ -1,3 +1,53 @@
+function templateNota(){
+// crear elemento de nota (div) e introducirlo en el root mediante el DOM
+const nota = document.createElement('div')
+const textnota = document.createTextNode('Editar nota')
+nota.appendChild(textnota)
+const root = document.getElementById('root')
+root.appendChild(nota)
+// Añadir al div la clase y el id NOTA
+nota.className = 'nota'
+nota.id='nota'
+// Añadir la clase para que se content editable
+nota.contentEditable = true
+    //**deshabilitar btnAdd
+btnAdd.disabled = true
+//creamos btn GUARDAR
+const btnSave = document.createElement('button')
+const textSave = document.createTextNode('Guardar')
+btnSave.onclick = function (){
+    // alert('Nota guardada')
+    setLocalInfo(nota)
+    document.getElementById('nota').remove()
+    btnAdd.disabled = false
+    btnSave.remove()
+    showInfo()
+}
+btnSave.appendChild(textSave)
+root.appendChild(btnSave)
+}
+
+// Crear un botón de AÑADIR nota
+const btnAdd = document.createElement('button')
+const textAdd = document.createTextNode('Añadir nota')
+btnAdd.appendChild(textAdd)
+root.appendChild(btnAdd)
+//Darle funcionalidad al botón para que agregue las notas. Primero agregamos todo el elemento de nota en una función templateNota
+btnAdd.addEventListener('click', templateNota)
+    //btnAdd.onclick='templateNota'
+// **deshabilitar btnAdd dentro de la función
+//Crear botón par GUARDAR nota DENTRO DE templateNota
+const show = document.createElement('show-notas')
+show.id='show-notas'
+root.appendChild(show)
+// Crear un botón de LIMPIAR notas
+    // const btnClean = document.createElement('button')
+    // const textClean = document.createTextNode('Limpiar notas')
+    // btnClean.appendChild(textClean)
+    // root.appendChild(btnClean)
+// 
+
+
 document.addEventListener('DOMContentLoaded',function(){
     showInfo();
 })
@@ -60,3 +110,4 @@ function cleanInfo(){
 localStorage.clear();
     console.log('En localstorage no hay notas')
 }
+
