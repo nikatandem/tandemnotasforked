@@ -37,14 +37,15 @@ btnAdd.addEventListener('click', templateNota)
     //btnAdd.onclick='templateNota'
 // **deshabilitar btnAdd dentro de la función
 //Crear botón par GUARDAR nota DENTRO DE templateNota
-const show = document.createElement('show-notas')
+const show = document.createElement('div')
 show.id='show-notas'
 root.appendChild(show)
 // Crear un botón de LIMPIAR notas
-    // const btnClean = document.createElement('button')
-    // const textClean = document.createTextNode('Limpiar notas')
-    // btnClean.appendChild(textClean)
-    // root.appendChild(btnClean)
+    const btnClean = document.createElement('button')
+    const textClean = document.createTextNode('Limpiar notas')
+    btnClean.appendChild(textClean)
+    root.appendChild(btnClean)
+    btnClean.addEventListener('click', cleanInfo)
 // 
 
 
@@ -108,6 +109,7 @@ function cleanInfo(){
     // limpiar el local storage y limpiar la pantaal
     // Elimina todos los elementos
 localStorage.clear();
+showInfo()
     console.log('En localstorage no hay notas')
 }
 
